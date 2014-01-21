@@ -12,24 +12,27 @@ enum DataTypeP {
 }
 
 struct AttributeValueP {
-  1: DataTypeP type,
+  1: DataTypeP dataType,
   2: string id,
-  3: optional string string_value,
-  4: optional i32 int_value,
-  5: optional i64 datetime_value,
-  6: optional bool boolean_value,
+  3: optional list<string> stringValues,
+  4: optional list<i32> intValues,
+  5: optional list<i64> datetimeValues,
+  6: optional list<bool> booleanValues,
 }
 
 struct SubjectP {
-  1: list<AttributeValueP> attributeValues
+  1: string id,
+  2: list<AttributeValueP> attributeValues
 }
 
 struct ObjectP {
-  1: list<AttributeValueP> attributeValues
+  1: string id,
+  2: list<AttributeValueP> attributeValues
 }
 
 struct ActionP {
-  1: list<AttributeValueP> attributeValues
+  1: string id,
+  2: list<AttributeValueP> attributeValues
 }
 
 struct EnvironmentP {

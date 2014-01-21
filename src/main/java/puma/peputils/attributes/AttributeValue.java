@@ -24,11 +24,21 @@ public abstract class AttributeValue {
 		return dataType;
 	}
 	
+	public void setDataType(DataType dataType) {
+		this.dataType = dataType;
+	}
+	
 	private String id;
+	
+	protected void setId(String id) {
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
 	}
+	
+	public abstract String getIdWithoutPrefix();
 
 	private Collection<Object> values; 
 
@@ -40,32 +50,41 @@ public abstract class AttributeValue {
 	 * CONSTRUCTORS
 	 ***********************/
 	
-	public AttributeValue(String id) {
-		this.id = id;
+	/**
+	 * Default constructor for sub-classes only.
+	 * Needed if the id should be calculated before calling super().
+	 */
+	protected AttributeValue() {
 		this.values = new LinkedList<Object>();
 	}
 	
-	public AttributeValue(String id, Integer value) {
+	public AttributeValue(String id) {
+		this();
+		this.id = id;
+	}
+	
+	public AttributeValue(String id, DataType dataType) {
 		this(id);
-		this.dataType = DataType.Integer;
+		this.dataType = dataType;
+	}
+	
+	public AttributeValue(String id, Integer value) {
+		this(id, DataType.Integer);
 		this.addValue(value);
 	}
 	
 	public AttributeValue(String id, Date value) {
-		this(id);
-		this.dataType = DataType.DateTime;
+		this(id, DataType.DateTime);
 		this.addValue(value);
 	}
 	
 	public AttributeValue(String id, String value) {
-		this(id);
-		this.dataType = DataType.String;
+		this(id, DataType.String);
 		this.addValue(value);
 	}
 	
 	public AttributeValue(String id, Boolean value) {
-		this(id);
-		this.dataType = DataType.Boolean;
+		this(id, DataType.Boolean);
 		this.addValue(value);
 	}
 	

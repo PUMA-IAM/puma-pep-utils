@@ -38,7 +38,8 @@ import org.slf4j.LoggerFactory;
 public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fields>, java.io.Serializable, Cloneable, Comparable<SubjectP> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("SubjectP");
 
-  private static final org.apache.thrift.protocol.TField ATTRIBUTE_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("attributeValues", org.apache.thrift.protocol.TType.LIST, (short)1);
+  private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField ATTRIBUTE_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("attributeValues", org.apache.thrift.protocol.TType.LIST, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -46,11 +47,13 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     schemes.put(TupleScheme.class, new SubjectPTupleSchemeFactory());
   }
 
+  public String id; // required
   public List<AttributeValueP> attributeValues; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    ATTRIBUTE_VALUES((short)1, "attributeValues");
+    ID((short)1, "id"),
+    ATTRIBUTE_VALUES((short)2, "attributeValues");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -65,7 +68,9 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // ATTRIBUTE_VALUES
+        case 1: // ID
+          return ID;
+        case 2: // ATTRIBUTE_VALUES
           return ATTRIBUTE_VALUES;
         default:
           return null;
@@ -110,6 +115,8 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.ATTRIBUTE_VALUES, new org.apache.thrift.meta_data.FieldMetaData("attributeValues", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
             new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, AttributeValueP.class))));
@@ -121,9 +128,11 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
   }
 
   public SubjectP(
+    String id,
     List<AttributeValueP> attributeValues)
   {
     this();
+    this.id = id;
     this.attributeValues = attributeValues;
   }
 
@@ -131,6 +140,9 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
    * Performs a deep copy on <i>other</i>.
    */
   public SubjectP(SubjectP other) {
+    if (other.isSetId()) {
+      this.id = other.id;
+    }
     if (other.isSetAttributeValues()) {
       List<AttributeValueP> __this__attributeValues = new ArrayList<AttributeValueP>(other.attributeValues.size());
       for (AttributeValueP other_element : other.attributeValues) {
@@ -146,7 +158,32 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
 
   @Override
   public void clear() {
+    this.id = null;
     this.attributeValues = null;
+  }
+
+  public String getId() {
+    return this.id;
+  }
+
+  public SubjectP setId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public void unsetId() {
+    this.id = null;
+  }
+
+  /** Returns true if field id is set (has been assigned a value) and false otherwise */
+  public boolean isSetId() {
+    return this.id != null;
+  }
+
+  public void setIdIsSet(boolean value) {
+    if (!value) {
+      this.id = null;
+    }
   }
 
   public int getAttributeValuesSize() {
@@ -190,6 +227,14 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
+    case ID:
+      if (value == null) {
+        unsetId();
+      } else {
+        setId((String)value);
+      }
+      break;
+
     case ATTRIBUTE_VALUES:
       if (value == null) {
         unsetAttributeValues();
@@ -203,6 +248,9 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
+    case ID:
+      return getId();
+
     case ATTRIBUTE_VALUES:
       return getAttributeValues();
 
@@ -217,6 +265,8 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     }
 
     switch (field) {
+    case ID:
+      return isSetId();
     case ATTRIBUTE_VALUES:
       return isSetAttributeValues();
     }
@@ -236,6 +286,15 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     if (that == null)
       return false;
 
+    boolean this_present_id = true && this.isSetId();
+    boolean that_present_id = true && that.isSetId();
+    if (this_present_id || that_present_id) {
+      if (!(this_present_id && that_present_id))
+        return false;
+      if (!this.id.equals(that.id))
+        return false;
+    }
+
     boolean this_present_attributeValues = true && this.isSetAttributeValues();
     boolean that_present_attributeValues = true && that.isSetAttributeValues();
     if (this_present_attributeValues || that_present_attributeValues) {
@@ -251,6 +310,11 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
   @Override
   public int hashCode() {
     List<Object> list = new ArrayList<Object>();
+
+    boolean present_id = true && (isSetId());
+    list.add(present_id);
+    if (present_id)
+      list.add(id);
 
     boolean present_attributeValues = true && (isSetAttributeValues());
     list.add(present_attributeValues);
@@ -268,6 +332,16 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
 
     int lastComparison = 0;
 
+    lastComparison = Boolean.valueOf(isSetId()).compareTo(other.isSetId());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetAttributeValues()).compareTo(other.isSetAttributeValues());
     if (lastComparison != 0) {
       return lastComparison;
@@ -298,6 +372,14 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     StringBuilder sb = new StringBuilder("SubjectP(");
     boolean first = true;
 
+    sb.append("id:");
+    if (this.id == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.id);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("attributeValues:");
     if (this.attributeValues == null) {
       sb.append("null");
@@ -348,17 +430,25 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
           break;
         }
         switch (schemeField.id) {
-          case 1: // ATTRIBUTE_VALUES
+          case 1: // ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.id = iprot.readString();
+              struct.setIdIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 2: // ATTRIBUTE_VALUES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                struct.attributeValues = new ArrayList<AttributeValueP>(_list0.size);
-                for (int _i1 = 0; _i1 < _list0.size; ++_i1)
+                org.apache.thrift.protocol.TList _list32 = iprot.readListBegin();
+                struct.attributeValues = new ArrayList<AttributeValueP>(_list32.size);
+                for (int _i33 = 0; _i33 < _list32.size; ++_i33)
                 {
-                  AttributeValueP _elem2;
-                  _elem2 = new AttributeValueP();
-                  _elem2.read(iprot);
-                  struct.attributeValues.add(_elem2);
+                  AttributeValueP _elem34;
+                  _elem34 = new AttributeValueP();
+                  _elem34.read(iprot);
+                  struct.attributeValues.add(_elem34);
                 }
                 iprot.readListEnd();
               }
@@ -382,13 +472,18 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.id != null) {
+        oprot.writeFieldBegin(ID_FIELD_DESC);
+        oprot.writeString(struct.id);
+        oprot.writeFieldEnd();
+      }
       if (struct.attributeValues != null) {
         oprot.writeFieldBegin(ATTRIBUTE_VALUES_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.attributeValues.size()));
-          for (AttributeValueP _iter3 : struct.attributeValues)
+          for (AttributeValueP _iter35 : struct.attributeValues)
           {
-            _iter3.write(oprot);
+            _iter35.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -412,16 +507,22 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     public void write(org.apache.thrift.protocol.TProtocol prot, SubjectP struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetAttributeValues()) {
+      if (struct.isSetId()) {
         optionals.set(0);
       }
-      oprot.writeBitSet(optionals, 1);
+      if (struct.isSetAttributeValues()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetId()) {
+        oprot.writeString(struct.id);
+      }
       if (struct.isSetAttributeValues()) {
         {
           oprot.writeI32(struct.attributeValues.size());
-          for (AttributeValueP _iter4 : struct.attributeValues)
+          for (AttributeValueP _iter36 : struct.attributeValues)
           {
-            _iter4.write(oprot);
+            _iter36.write(oprot);
           }
         }
       }
@@ -430,17 +531,21 @@ public class SubjectP implements org.apache.thrift.TBase<SubjectP, SubjectP._Fie
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, SubjectP struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(1);
+      BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
+        struct.id = iprot.readString();
+        struct.setIdIsSet(true);
+      }
+      if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.attributeValues = new ArrayList<AttributeValueP>(_list5.size);
-          for (int _i6 = 0; _i6 < _list5.size; ++_i6)
+          org.apache.thrift.protocol.TList _list37 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.attributeValues = new ArrayList<AttributeValueP>(_list37.size);
+          for (int _i38 = 0; _i38 < _list37.size; ++_i38)
           {
-            AttributeValueP _elem7;
-            _elem7 = new AttributeValueP();
-            _elem7.read(iprot);
-            struct.attributeValues.add(_elem7);
+            AttributeValueP _elem39;
+            _elem39 = new AttributeValueP();
+            _elem39.read(iprot);
+            struct.attributeValues.add(_elem39);
           }
         }
         struct.setAttributeValuesIsSet(true);

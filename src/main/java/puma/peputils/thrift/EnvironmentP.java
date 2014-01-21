@@ -351,14 +351,14 @@ public class EnvironmentP implements org.apache.thrift.TBase<EnvironmentP, Envir
           case 1: // ATTRIBUTE_VALUES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list24 = iprot.readListBegin();
-                struct.attributeValues = new ArrayList<AttributeValueP>(_list24.size);
-                for (int _i25 = 0; _i25 < _list24.size; ++_i25)
+                org.apache.thrift.protocol.TList _list56 = iprot.readListBegin();
+                struct.attributeValues = new ArrayList<AttributeValueP>(_list56.size);
+                for (int _i57 = 0; _i57 < _list56.size; ++_i57)
                 {
-                  AttributeValueP _elem26;
-                  _elem26 = new AttributeValueP();
-                  _elem26.read(iprot);
-                  struct.attributeValues.add(_elem26);
+                  AttributeValueP _elem58;
+                  _elem58 = new AttributeValueP();
+                  _elem58.read(iprot);
+                  struct.attributeValues.add(_elem58);
                 }
                 iprot.readListEnd();
               }
@@ -386,9 +386,9 @@ public class EnvironmentP implements org.apache.thrift.TBase<EnvironmentP, Envir
         oprot.writeFieldBegin(ATTRIBUTE_VALUES_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.attributeValues.size()));
-          for (AttributeValueP _iter27 : struct.attributeValues)
+          for (AttributeValueP _iter59 : struct.attributeValues)
           {
-            _iter27.write(oprot);
+            _iter59.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -419,9 +419,9 @@ public class EnvironmentP implements org.apache.thrift.TBase<EnvironmentP, Envir
       if (struct.isSetAttributeValues()) {
         {
           oprot.writeI32(struct.attributeValues.size());
-          for (AttributeValueP _iter28 : struct.attributeValues)
+          for (AttributeValueP _iter60 : struct.attributeValues)
           {
-            _iter28.write(oprot);
+            _iter60.write(oprot);
           }
         }
       }
@@ -433,14 +433,14 @@ public class EnvironmentP implements org.apache.thrift.TBase<EnvironmentP, Envir
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.attributeValues = new ArrayList<AttributeValueP>(_list29.size);
-          for (int _i30 = 0; _i30 < _list29.size; ++_i30)
+          org.apache.thrift.protocol.TList _list61 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.attributeValues = new ArrayList<AttributeValueP>(_list61.size);
+          for (int _i62 = 0; _i62 < _list61.size; ++_i62)
           {
-            AttributeValueP _elem31;
-            _elem31 = new AttributeValueP();
-            _elem31.read(iprot);
-            struct.attributeValues.add(_elem31);
+            AttributeValueP _elem63;
+            _elem63 = new AttributeValueP();
+            _elem63.read(iprot);
+            struct.attributeValues.add(_elem63);
           }
         }
         struct.setAttributeValuesIsSet(true);

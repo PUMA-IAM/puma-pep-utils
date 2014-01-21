@@ -2,6 +2,9 @@ package puma.peputils.attributes;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
+
+
 /**
  * Class representing a subject attribute.
  *  
@@ -10,10 +13,15 @@ import java.util.Date;
  */
 public class ActionAttributeValue extends AttributeValue {
 	
-	private static final String prefix = "action";
+	public static final String prefix = "action";
 	
 	private static final String addPrefix(String s) {
 		return prefix + ":" + s;
+	}
+
+	@Override
+	public String getIdWithoutPrefix() {
+		return StringUtils.removeStart(this.getId(), prefix + ":");
 	}
 	
 	/***********************
@@ -22,6 +30,10 @@ public class ActionAttributeValue extends AttributeValue {
 	
 	public ActionAttributeValue(String id) {
 		super(addPrefix(id));
+	}
+	
+	public ActionAttributeValue(String id, DataType dataType) {
+		super(addPrefix(id), dataType);
 	}
 	
 	public ActionAttributeValue(String id, Integer value) {

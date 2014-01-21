@@ -38,12 +38,12 @@ import org.slf4j.LoggerFactory;
 public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP, AttributeValueP._Fields>, java.io.Serializable, Cloneable, Comparable<AttributeValueP> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("AttributeValueP");
 
-  private static final org.apache.thrift.protocol.TField TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("type", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField DATA_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("dataType", org.apache.thrift.protocol.TType.I32, (short)1);
   private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField STRING_VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("string_value", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField INT_VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("int_value", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField DATETIME_VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("datetime_value", org.apache.thrift.protocol.TType.I64, (short)5);
-  private static final org.apache.thrift.protocol.TField BOOLEAN_VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("boolean_value", org.apache.thrift.protocol.TType.BOOL, (short)6);
+  private static final org.apache.thrift.protocol.TField STRING_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("stringValues", org.apache.thrift.protocol.TType.LIST, (short)3);
+  private static final org.apache.thrift.protocol.TField INT_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("intValues", org.apache.thrift.protocol.TType.LIST, (short)4);
+  private static final org.apache.thrift.protocol.TField DATETIME_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("datetimeValues", org.apache.thrift.protocol.TType.LIST, (short)5);
+  private static final org.apache.thrift.protocol.TField BOOLEAN_VALUES_FIELD_DESC = new org.apache.thrift.protocol.TField("booleanValues", org.apache.thrift.protocol.TType.LIST, (short)6);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -55,12 +55,12 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
    * 
    * @see DataTypeP
    */
-  public DataTypeP type; // required
+  public DataTypeP dataType; // required
   public String id; // required
-  public String string_value; // optional
-  public int int_value; // optional
-  public long datetime_value; // optional
-  public boolean boolean_value; // optional
+  public List<String> stringValues; // optional
+  public List<Integer> intValues; // optional
+  public List<Long> datetimeValues; // optional
+  public List<Boolean> booleanValues; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -68,12 +68,12 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
      * 
      * @see DataTypeP
      */
-    TYPE((short)1, "type"),
+    DATA_TYPE((short)1, "dataType"),
     ID((short)2, "id"),
-    STRING_VALUE((short)3, "string_value"),
-    INT_VALUE((short)4, "int_value"),
-    DATETIME_VALUE((short)5, "datetime_value"),
-    BOOLEAN_VALUE((short)6, "boolean_value");
+    STRING_VALUES((short)3, "stringValues"),
+    INT_VALUES((short)4, "intValues"),
+    DATETIME_VALUES((short)5, "datetimeValues"),
+    BOOLEAN_VALUES((short)6, "booleanValues");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -88,18 +88,18 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // TYPE
-          return TYPE;
+        case 1: // DATA_TYPE
+          return DATA_TYPE;
         case 2: // ID
           return ID;
-        case 3: // STRING_VALUE
-          return STRING_VALUE;
-        case 4: // INT_VALUE
-          return INT_VALUE;
-        case 5: // DATETIME_VALUE
-          return DATETIME_VALUE;
-        case 6: // BOOLEAN_VALUE
-          return BOOLEAN_VALUE;
+        case 3: // STRING_VALUES
+          return STRING_VALUES;
+        case 4: // INT_VALUES
+          return INT_VALUES;
+        case 5: // DATETIME_VALUES
+          return DATETIME_VALUES;
+        case 6: // BOOLEAN_VALUES
+          return BOOLEAN_VALUES;
         default:
           return null;
       }
@@ -140,26 +140,26 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
   }
 
   // isset id assignments
-  private static final int __INT_VALUE_ISSET_ID = 0;
-  private static final int __DATETIME_VALUE_ISSET_ID = 1;
-  private static final int __BOOLEAN_VALUE_ISSET_ID = 2;
-  private byte __isset_bitfield = 0;
-  private static final _Fields optionals[] = {_Fields.STRING_VALUE,_Fields.INT_VALUE,_Fields.DATETIME_VALUE,_Fields.BOOLEAN_VALUE};
+  private static final _Fields optionals[] = {_Fields.STRING_VALUES,_Fields.INT_VALUES,_Fields.DATETIME_VALUES,_Fields.BOOLEAN_VALUES};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.TYPE, new org.apache.thrift.meta_data.FieldMetaData("type", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.DATA_TYPE, new org.apache.thrift.meta_data.FieldMetaData("dataType", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, DataTypeP.class)));
     tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.STRING_VALUE, new org.apache.thrift.meta_data.FieldMetaData("string_value", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.INT_VALUE, new org.apache.thrift.meta_data.FieldMetaData("int_value", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.DATETIME_VALUE, new org.apache.thrift.meta_data.FieldMetaData("datetime_value", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.BOOLEAN_VALUE, new org.apache.thrift.meta_data.FieldMetaData("boolean_value", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
+    tmpMap.put(_Fields.STRING_VALUES, new org.apache.thrift.meta_data.FieldMetaData("stringValues", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
+    tmpMap.put(_Fields.INT_VALUES, new org.apache.thrift.meta_data.FieldMetaData("intValues", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32))));
+    tmpMap.put(_Fields.DATETIME_VALUES, new org.apache.thrift.meta_data.FieldMetaData("datetimeValues", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64))));
+    tmpMap.put(_Fields.BOOLEAN_VALUES, new org.apache.thrift.meta_data.FieldMetaData("booleanValues", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(AttributeValueP.class, metaDataMap);
   }
@@ -168,11 +168,11 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
   }
 
   public AttributeValueP(
-    DataTypeP type,
+    DataTypeP dataType,
     String id)
   {
     this();
-    this.type = type;
+    this.dataType = dataType;
     this.id = id;
   }
 
@@ -180,19 +180,28 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
    * Performs a deep copy on <i>other</i>.
    */
   public AttributeValueP(AttributeValueP other) {
-    __isset_bitfield = other.__isset_bitfield;
-    if (other.isSetType()) {
-      this.type = other.type;
+    if (other.isSetDataType()) {
+      this.dataType = other.dataType;
     }
     if (other.isSetId()) {
       this.id = other.id;
     }
-    if (other.isSetString_value()) {
-      this.string_value = other.string_value;
+    if (other.isSetStringValues()) {
+      List<String> __this__stringValues = new ArrayList<String>(other.stringValues);
+      this.stringValues = __this__stringValues;
     }
-    this.int_value = other.int_value;
-    this.datetime_value = other.datetime_value;
-    this.boolean_value = other.boolean_value;
+    if (other.isSetIntValues()) {
+      List<Integer> __this__intValues = new ArrayList<Integer>(other.intValues);
+      this.intValues = __this__intValues;
+    }
+    if (other.isSetDatetimeValues()) {
+      List<Long> __this__datetimeValues = new ArrayList<Long>(other.datetimeValues);
+      this.datetimeValues = __this__datetimeValues;
+    }
+    if (other.isSetBooleanValues()) {
+      List<Boolean> __this__booleanValues = new ArrayList<Boolean>(other.booleanValues);
+      this.booleanValues = __this__booleanValues;
+    }
   }
 
   public AttributeValueP deepCopy() {
@@ -201,46 +210,43 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
 
   @Override
   public void clear() {
-    this.type = null;
+    this.dataType = null;
     this.id = null;
-    this.string_value = null;
-    setInt_valueIsSet(false);
-    this.int_value = 0;
-    setDatetime_valueIsSet(false);
-    this.datetime_value = 0;
-    setBoolean_valueIsSet(false);
-    this.boolean_value = false;
+    this.stringValues = null;
+    this.intValues = null;
+    this.datetimeValues = null;
+    this.booleanValues = null;
   }
 
   /**
    * 
    * @see DataTypeP
    */
-  public DataTypeP getType() {
-    return this.type;
+  public DataTypeP getDataType() {
+    return this.dataType;
   }
 
   /**
    * 
    * @see DataTypeP
    */
-  public AttributeValueP setType(DataTypeP type) {
-    this.type = type;
+  public AttributeValueP setDataType(DataTypeP dataType) {
+    this.dataType = dataType;
     return this;
   }
 
-  public void unsetType() {
-    this.type = null;
+  public void unsetDataType() {
+    this.dataType = null;
   }
 
-  /** Returns true if field type is set (has been assigned a value) and false otherwise */
-  public boolean isSetType() {
-    return this.type != null;
+  /** Returns true if field dataType is set (has been assigned a value) and false otherwise */
+  public boolean isSetDataType() {
+    return this.dataType != null;
   }
 
-  public void setTypeIsSet(boolean value) {
+  public void setDataTypeIsSet(boolean value) {
     if (!value) {
-      this.type = null;
+      this.dataType = null;
     }
   }
 
@@ -268,106 +274,169 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
     }
   }
 
-  public String getString_value() {
-    return this.string_value;
+  public int getStringValuesSize() {
+    return (this.stringValues == null) ? 0 : this.stringValues.size();
   }
 
-  public AttributeValueP setString_value(String string_value) {
-    this.string_value = string_value;
+  public java.util.Iterator<String> getStringValuesIterator() {
+    return (this.stringValues == null) ? null : this.stringValues.iterator();
+  }
+
+  public void addToStringValues(String elem) {
+    if (this.stringValues == null) {
+      this.stringValues = new ArrayList<String>();
+    }
+    this.stringValues.add(elem);
+  }
+
+  public List<String> getStringValues() {
+    return this.stringValues;
+  }
+
+  public AttributeValueP setStringValues(List<String> stringValues) {
+    this.stringValues = stringValues;
     return this;
   }
 
-  public void unsetString_value() {
-    this.string_value = null;
+  public void unsetStringValues() {
+    this.stringValues = null;
   }
 
-  /** Returns true if field string_value is set (has been assigned a value) and false otherwise */
-  public boolean isSetString_value() {
-    return this.string_value != null;
+  /** Returns true if field stringValues is set (has been assigned a value) and false otherwise */
+  public boolean isSetStringValues() {
+    return this.stringValues != null;
   }
 
-  public void setString_valueIsSet(boolean value) {
+  public void setStringValuesIsSet(boolean value) {
     if (!value) {
-      this.string_value = null;
+      this.stringValues = null;
     }
   }
 
-  public int getInt_value() {
-    return this.int_value;
+  public int getIntValuesSize() {
+    return (this.intValues == null) ? 0 : this.intValues.size();
   }
 
-  public AttributeValueP setInt_value(int int_value) {
-    this.int_value = int_value;
-    setInt_valueIsSet(true);
+  public java.util.Iterator<Integer> getIntValuesIterator() {
+    return (this.intValues == null) ? null : this.intValues.iterator();
+  }
+
+  public void addToIntValues(int elem) {
+    if (this.intValues == null) {
+      this.intValues = new ArrayList<Integer>();
+    }
+    this.intValues.add(elem);
+  }
+
+  public List<Integer> getIntValues() {
+    return this.intValues;
+  }
+
+  public AttributeValueP setIntValues(List<Integer> intValues) {
+    this.intValues = intValues;
     return this;
   }
 
-  public void unsetInt_value() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __INT_VALUE_ISSET_ID);
+  public void unsetIntValues() {
+    this.intValues = null;
   }
 
-  /** Returns true if field int_value is set (has been assigned a value) and false otherwise */
-  public boolean isSetInt_value() {
-    return EncodingUtils.testBit(__isset_bitfield, __INT_VALUE_ISSET_ID);
+  /** Returns true if field intValues is set (has been assigned a value) and false otherwise */
+  public boolean isSetIntValues() {
+    return this.intValues != null;
   }
 
-  public void setInt_valueIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __INT_VALUE_ISSET_ID, value);
+  public void setIntValuesIsSet(boolean value) {
+    if (!value) {
+      this.intValues = null;
+    }
   }
 
-  public long getDatetime_value() {
-    return this.datetime_value;
+  public int getDatetimeValuesSize() {
+    return (this.datetimeValues == null) ? 0 : this.datetimeValues.size();
   }
 
-  public AttributeValueP setDatetime_value(long datetime_value) {
-    this.datetime_value = datetime_value;
-    setDatetime_valueIsSet(true);
+  public java.util.Iterator<Long> getDatetimeValuesIterator() {
+    return (this.datetimeValues == null) ? null : this.datetimeValues.iterator();
+  }
+
+  public void addToDatetimeValues(long elem) {
+    if (this.datetimeValues == null) {
+      this.datetimeValues = new ArrayList<Long>();
+    }
+    this.datetimeValues.add(elem);
+  }
+
+  public List<Long> getDatetimeValues() {
+    return this.datetimeValues;
+  }
+
+  public AttributeValueP setDatetimeValues(List<Long> datetimeValues) {
+    this.datetimeValues = datetimeValues;
     return this;
   }
 
-  public void unsetDatetime_value() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DATETIME_VALUE_ISSET_ID);
+  public void unsetDatetimeValues() {
+    this.datetimeValues = null;
   }
 
-  /** Returns true if field datetime_value is set (has been assigned a value) and false otherwise */
-  public boolean isSetDatetime_value() {
-    return EncodingUtils.testBit(__isset_bitfield, __DATETIME_VALUE_ISSET_ID);
+  /** Returns true if field datetimeValues is set (has been assigned a value) and false otherwise */
+  public boolean isSetDatetimeValues() {
+    return this.datetimeValues != null;
   }
 
-  public void setDatetime_valueIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DATETIME_VALUE_ISSET_ID, value);
+  public void setDatetimeValuesIsSet(boolean value) {
+    if (!value) {
+      this.datetimeValues = null;
+    }
   }
 
-  public boolean isBoolean_value() {
-    return this.boolean_value;
+  public int getBooleanValuesSize() {
+    return (this.booleanValues == null) ? 0 : this.booleanValues.size();
   }
 
-  public AttributeValueP setBoolean_value(boolean boolean_value) {
-    this.boolean_value = boolean_value;
-    setBoolean_valueIsSet(true);
+  public java.util.Iterator<Boolean> getBooleanValuesIterator() {
+    return (this.booleanValues == null) ? null : this.booleanValues.iterator();
+  }
+
+  public void addToBooleanValues(boolean elem) {
+    if (this.booleanValues == null) {
+      this.booleanValues = new ArrayList<Boolean>();
+    }
+    this.booleanValues.add(elem);
+  }
+
+  public List<Boolean> getBooleanValues() {
+    return this.booleanValues;
+  }
+
+  public AttributeValueP setBooleanValues(List<Boolean> booleanValues) {
+    this.booleanValues = booleanValues;
     return this;
   }
 
-  public void unsetBoolean_value() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __BOOLEAN_VALUE_ISSET_ID);
+  public void unsetBooleanValues() {
+    this.booleanValues = null;
   }
 
-  /** Returns true if field boolean_value is set (has been assigned a value) and false otherwise */
-  public boolean isSetBoolean_value() {
-    return EncodingUtils.testBit(__isset_bitfield, __BOOLEAN_VALUE_ISSET_ID);
+  /** Returns true if field booleanValues is set (has been assigned a value) and false otherwise */
+  public boolean isSetBooleanValues() {
+    return this.booleanValues != null;
   }
 
-  public void setBoolean_valueIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __BOOLEAN_VALUE_ISSET_ID, value);
+  public void setBooleanValuesIsSet(boolean value) {
+    if (!value) {
+      this.booleanValues = null;
+    }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case TYPE:
+    case DATA_TYPE:
       if (value == null) {
-        unsetType();
+        unsetDataType();
       } else {
-        setType((DataTypeP)value);
+        setDataType((DataTypeP)value);
       }
       break;
 
@@ -379,35 +448,35 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
       }
       break;
 
-    case STRING_VALUE:
+    case STRING_VALUES:
       if (value == null) {
-        unsetString_value();
+        unsetStringValues();
       } else {
-        setString_value((String)value);
+        setStringValues((List<String>)value);
       }
       break;
 
-    case INT_VALUE:
+    case INT_VALUES:
       if (value == null) {
-        unsetInt_value();
+        unsetIntValues();
       } else {
-        setInt_value((Integer)value);
+        setIntValues((List<Integer>)value);
       }
       break;
 
-    case DATETIME_VALUE:
+    case DATETIME_VALUES:
       if (value == null) {
-        unsetDatetime_value();
+        unsetDatetimeValues();
       } else {
-        setDatetime_value((Long)value);
+        setDatetimeValues((List<Long>)value);
       }
       break;
 
-    case BOOLEAN_VALUE:
+    case BOOLEAN_VALUES:
       if (value == null) {
-        unsetBoolean_value();
+        unsetBooleanValues();
       } else {
-        setBoolean_value((Boolean)value);
+        setBooleanValues((List<Boolean>)value);
       }
       break;
 
@@ -416,23 +485,23 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case TYPE:
-      return getType();
+    case DATA_TYPE:
+      return getDataType();
 
     case ID:
       return getId();
 
-    case STRING_VALUE:
-      return getString_value();
+    case STRING_VALUES:
+      return getStringValues();
 
-    case INT_VALUE:
-      return Integer.valueOf(getInt_value());
+    case INT_VALUES:
+      return getIntValues();
 
-    case DATETIME_VALUE:
-      return Long.valueOf(getDatetime_value());
+    case DATETIME_VALUES:
+      return getDatetimeValues();
 
-    case BOOLEAN_VALUE:
-      return Boolean.valueOf(isBoolean_value());
+    case BOOLEAN_VALUES:
+      return getBooleanValues();
 
     }
     throw new IllegalStateException();
@@ -445,18 +514,18 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
     }
 
     switch (field) {
-    case TYPE:
-      return isSetType();
+    case DATA_TYPE:
+      return isSetDataType();
     case ID:
       return isSetId();
-    case STRING_VALUE:
-      return isSetString_value();
-    case INT_VALUE:
-      return isSetInt_value();
-    case DATETIME_VALUE:
-      return isSetDatetime_value();
-    case BOOLEAN_VALUE:
-      return isSetBoolean_value();
+    case STRING_VALUES:
+      return isSetStringValues();
+    case INT_VALUES:
+      return isSetIntValues();
+    case DATETIME_VALUES:
+      return isSetDatetimeValues();
+    case BOOLEAN_VALUES:
+      return isSetBooleanValues();
     }
     throw new IllegalStateException();
   }
@@ -474,12 +543,12 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
     if (that == null)
       return false;
 
-    boolean this_present_type = true && this.isSetType();
-    boolean that_present_type = true && that.isSetType();
-    if (this_present_type || that_present_type) {
-      if (!(this_present_type && that_present_type))
+    boolean this_present_dataType = true && this.isSetDataType();
+    boolean that_present_dataType = true && that.isSetDataType();
+    if (this_present_dataType || that_present_dataType) {
+      if (!(this_present_dataType && that_present_dataType))
         return false;
-      if (!this.type.equals(that.type))
+      if (!this.dataType.equals(that.dataType))
         return false;
     }
 
@@ -492,39 +561,39 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
         return false;
     }
 
-    boolean this_present_string_value = true && this.isSetString_value();
-    boolean that_present_string_value = true && that.isSetString_value();
-    if (this_present_string_value || that_present_string_value) {
-      if (!(this_present_string_value && that_present_string_value))
+    boolean this_present_stringValues = true && this.isSetStringValues();
+    boolean that_present_stringValues = true && that.isSetStringValues();
+    if (this_present_stringValues || that_present_stringValues) {
+      if (!(this_present_stringValues && that_present_stringValues))
         return false;
-      if (!this.string_value.equals(that.string_value))
-        return false;
-    }
-
-    boolean this_present_int_value = true && this.isSetInt_value();
-    boolean that_present_int_value = true && that.isSetInt_value();
-    if (this_present_int_value || that_present_int_value) {
-      if (!(this_present_int_value && that_present_int_value))
-        return false;
-      if (this.int_value != that.int_value)
+      if (!this.stringValues.equals(that.stringValues))
         return false;
     }
 
-    boolean this_present_datetime_value = true && this.isSetDatetime_value();
-    boolean that_present_datetime_value = true && that.isSetDatetime_value();
-    if (this_present_datetime_value || that_present_datetime_value) {
-      if (!(this_present_datetime_value && that_present_datetime_value))
+    boolean this_present_intValues = true && this.isSetIntValues();
+    boolean that_present_intValues = true && that.isSetIntValues();
+    if (this_present_intValues || that_present_intValues) {
+      if (!(this_present_intValues && that_present_intValues))
         return false;
-      if (this.datetime_value != that.datetime_value)
+      if (!this.intValues.equals(that.intValues))
         return false;
     }
 
-    boolean this_present_boolean_value = true && this.isSetBoolean_value();
-    boolean that_present_boolean_value = true && that.isSetBoolean_value();
-    if (this_present_boolean_value || that_present_boolean_value) {
-      if (!(this_present_boolean_value && that_present_boolean_value))
+    boolean this_present_datetimeValues = true && this.isSetDatetimeValues();
+    boolean that_present_datetimeValues = true && that.isSetDatetimeValues();
+    if (this_present_datetimeValues || that_present_datetimeValues) {
+      if (!(this_present_datetimeValues && that_present_datetimeValues))
         return false;
-      if (this.boolean_value != that.boolean_value)
+      if (!this.datetimeValues.equals(that.datetimeValues))
+        return false;
+    }
+
+    boolean this_present_booleanValues = true && this.isSetBooleanValues();
+    boolean that_present_booleanValues = true && that.isSetBooleanValues();
+    if (this_present_booleanValues || that_present_booleanValues) {
+      if (!(this_present_booleanValues && that_present_booleanValues))
+        return false;
+      if (!this.booleanValues.equals(that.booleanValues))
         return false;
     }
 
@@ -535,35 +604,35 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
   public int hashCode() {
     List<Object> list = new ArrayList<Object>();
 
-    boolean present_type = true && (isSetType());
-    list.add(present_type);
-    if (present_type)
-      list.add(type.getValue());
+    boolean present_dataType = true && (isSetDataType());
+    list.add(present_dataType);
+    if (present_dataType)
+      list.add(dataType.getValue());
 
     boolean present_id = true && (isSetId());
     list.add(present_id);
     if (present_id)
       list.add(id);
 
-    boolean present_string_value = true && (isSetString_value());
-    list.add(present_string_value);
-    if (present_string_value)
-      list.add(string_value);
+    boolean present_stringValues = true && (isSetStringValues());
+    list.add(present_stringValues);
+    if (present_stringValues)
+      list.add(stringValues);
 
-    boolean present_int_value = true && (isSetInt_value());
-    list.add(present_int_value);
-    if (present_int_value)
-      list.add(int_value);
+    boolean present_intValues = true && (isSetIntValues());
+    list.add(present_intValues);
+    if (present_intValues)
+      list.add(intValues);
 
-    boolean present_datetime_value = true && (isSetDatetime_value());
-    list.add(present_datetime_value);
-    if (present_datetime_value)
-      list.add(datetime_value);
+    boolean present_datetimeValues = true && (isSetDatetimeValues());
+    list.add(present_datetimeValues);
+    if (present_datetimeValues)
+      list.add(datetimeValues);
 
-    boolean present_boolean_value = true && (isSetBoolean_value());
-    list.add(present_boolean_value);
-    if (present_boolean_value)
-      list.add(boolean_value);
+    boolean present_booleanValues = true && (isSetBooleanValues());
+    list.add(present_booleanValues);
+    if (present_booleanValues)
+      list.add(booleanValues);
 
     return list.hashCode();
   }
@@ -576,12 +645,12 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetType()).compareTo(other.isSetType());
+    lastComparison = Boolean.valueOf(isSetDataType()).compareTo(other.isSetDataType());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.type, other.type);
+    if (isSetDataType()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.dataType, other.dataType);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -596,42 +665,42 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetString_value()).compareTo(other.isSetString_value());
+    lastComparison = Boolean.valueOf(isSetStringValues()).compareTo(other.isSetStringValues());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetString_value()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.string_value, other.string_value);
+    if (isSetStringValues()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.stringValues, other.stringValues);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetInt_value()).compareTo(other.isSetInt_value());
+    lastComparison = Boolean.valueOf(isSetIntValues()).compareTo(other.isSetIntValues());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetInt_value()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.int_value, other.int_value);
+    if (isSetIntValues()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.intValues, other.intValues);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetDatetime_value()).compareTo(other.isSetDatetime_value());
+    lastComparison = Boolean.valueOf(isSetDatetimeValues()).compareTo(other.isSetDatetimeValues());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetDatetime_value()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.datetime_value, other.datetime_value);
+    if (isSetDatetimeValues()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.datetimeValues, other.datetimeValues);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetBoolean_value()).compareTo(other.isSetBoolean_value());
+    lastComparison = Boolean.valueOf(isSetBooleanValues()).compareTo(other.isSetBooleanValues());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetBoolean_value()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.boolean_value, other.boolean_value);
+    if (isSetBooleanValues()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.booleanValues, other.booleanValues);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -656,11 +725,11 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
     StringBuilder sb = new StringBuilder("AttributeValueP(");
     boolean first = true;
 
-    sb.append("type:");
-    if (this.type == null) {
+    sb.append("dataType:");
+    if (this.dataType == null) {
       sb.append("null");
     } else {
-      sb.append(this.type);
+      sb.append(this.dataType);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -671,32 +740,44 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
       sb.append(this.id);
     }
     first = false;
-    if (isSetString_value()) {
+    if (isSetStringValues()) {
       if (!first) sb.append(", ");
-      sb.append("string_value:");
-      if (this.string_value == null) {
+      sb.append("stringValues:");
+      if (this.stringValues == null) {
         sb.append("null");
       } else {
-        sb.append(this.string_value);
+        sb.append(this.stringValues);
       }
       first = false;
     }
-    if (isSetInt_value()) {
+    if (isSetIntValues()) {
       if (!first) sb.append(", ");
-      sb.append("int_value:");
-      sb.append(this.int_value);
+      sb.append("intValues:");
+      if (this.intValues == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.intValues);
+      }
       first = false;
     }
-    if (isSetDatetime_value()) {
+    if (isSetDatetimeValues()) {
       if (!first) sb.append(", ");
-      sb.append("datetime_value:");
-      sb.append(this.datetime_value);
+      sb.append("datetimeValues:");
+      if (this.datetimeValues == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.datetimeValues);
+      }
       first = false;
     }
-    if (isSetBoolean_value()) {
+    if (isSetBooleanValues()) {
       if (!first) sb.append(", ");
-      sb.append("boolean_value:");
-      sb.append(this.boolean_value);
+      sb.append("booleanValues:");
+      if (this.booleanValues == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.booleanValues);
+      }
       first = false;
     }
     sb.append(")");
@@ -718,8 +799,6 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
 
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
-      // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
-      __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
     } catch (org.apache.thrift.TException te) {
       throw new java.io.IOException(te);
@@ -744,10 +823,10 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
           break;
         }
         switch (schemeField.id) {
-          case 1: // TYPE
+          case 1: // DATA_TYPE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.type = DataTypeP.findByValue(iprot.readI32());
-              struct.setTypeIsSet(true);
+              struct.dataType = DataTypeP.findByValue(iprot.readI32());
+              struct.setDataTypeIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -760,34 +839,74 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // STRING_VALUE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.string_value = iprot.readString();
-              struct.setString_valueIsSet(true);
+          case 3: // STRING_VALUES
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
+                struct.stringValues = new ArrayList<String>(_list0.size);
+                for (int _i1 = 0; _i1 < _list0.size; ++_i1)
+                {
+                  String _elem2;
+                  _elem2 = iprot.readString();
+                  struct.stringValues.add(_elem2);
+                }
+                iprot.readListEnd();
+              }
+              struct.setStringValuesIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // INT_VALUE
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.int_value = iprot.readI32();
-              struct.setInt_valueIsSet(true);
+          case 4: // INT_VALUES
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list3 = iprot.readListBegin();
+                struct.intValues = new ArrayList<Integer>(_list3.size);
+                for (int _i4 = 0; _i4 < _list3.size; ++_i4)
+                {
+                  int _elem5;
+                  _elem5 = iprot.readI32();
+                  struct.intValues.add(_elem5);
+                }
+                iprot.readListEnd();
+              }
+              struct.setIntValuesIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // DATETIME_VALUE
-            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.datetime_value = iprot.readI64();
-              struct.setDatetime_valueIsSet(true);
+          case 5: // DATETIME_VALUES
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list6 = iprot.readListBegin();
+                struct.datetimeValues = new ArrayList<Long>(_list6.size);
+                for (int _i7 = 0; _i7 < _list6.size; ++_i7)
+                {
+                  long _elem8;
+                  _elem8 = iprot.readI64();
+                  struct.datetimeValues.add(_elem8);
+                }
+                iprot.readListEnd();
+              }
+              struct.setDatetimeValuesIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // BOOLEAN_VALUE
-            if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
-              struct.boolean_value = iprot.readBool();
-              struct.setBoolean_valueIsSet(true);
+          case 6: // BOOLEAN_VALUES
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list9 = iprot.readListBegin();
+                struct.booleanValues = new ArrayList<Boolean>(_list9.size);
+                for (int _i10 = 0; _i10 < _list9.size; ++_i10)
+                {
+                  boolean _elem11;
+                  _elem11 = iprot.readBool();
+                  struct.booleanValues.add(_elem11);
+                }
+                iprot.readListEnd();
+              }
+              struct.setBooleanValuesIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -807,9 +926,9 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.type != null) {
-        oprot.writeFieldBegin(TYPE_FIELD_DESC);
-        oprot.writeI32(struct.type.getValue());
+      if (struct.dataType != null) {
+        oprot.writeFieldBegin(DATA_TYPE_FIELD_DESC);
+        oprot.writeI32(struct.dataType.getValue());
         oprot.writeFieldEnd();
       }
       if (struct.id != null) {
@@ -817,27 +936,61 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
         oprot.writeString(struct.id);
         oprot.writeFieldEnd();
       }
-      if (struct.string_value != null) {
-        if (struct.isSetString_value()) {
-          oprot.writeFieldBegin(STRING_VALUE_FIELD_DESC);
-          oprot.writeString(struct.string_value);
+      if (struct.stringValues != null) {
+        if (struct.isSetStringValues()) {
+          oprot.writeFieldBegin(STRING_VALUES_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.stringValues.size()));
+            for (String _iter12 : struct.stringValues)
+            {
+              oprot.writeString(_iter12);
+            }
+            oprot.writeListEnd();
+          }
           oprot.writeFieldEnd();
         }
       }
-      if (struct.isSetInt_value()) {
-        oprot.writeFieldBegin(INT_VALUE_FIELD_DESC);
-        oprot.writeI32(struct.int_value);
-        oprot.writeFieldEnd();
+      if (struct.intValues != null) {
+        if (struct.isSetIntValues()) {
+          oprot.writeFieldBegin(INT_VALUES_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, struct.intValues.size()));
+            for (int _iter13 : struct.intValues)
+            {
+              oprot.writeI32(_iter13);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
       }
-      if (struct.isSetDatetime_value()) {
-        oprot.writeFieldBegin(DATETIME_VALUE_FIELD_DESC);
-        oprot.writeI64(struct.datetime_value);
-        oprot.writeFieldEnd();
+      if (struct.datetimeValues != null) {
+        if (struct.isSetDatetimeValues()) {
+          oprot.writeFieldBegin(DATETIME_VALUES_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64, struct.datetimeValues.size()));
+            for (long _iter14 : struct.datetimeValues)
+            {
+              oprot.writeI64(_iter14);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
       }
-      if (struct.isSetBoolean_value()) {
-        oprot.writeFieldBegin(BOOLEAN_VALUE_FIELD_DESC);
-        oprot.writeBool(struct.boolean_value);
-        oprot.writeFieldEnd();
+      if (struct.booleanValues != null) {
+        if (struct.isSetBooleanValues()) {
+          oprot.writeFieldBegin(BOOLEAN_VALUES_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.BOOL, struct.booleanValues.size()));
+            for (boolean _iter15 : struct.booleanValues)
+            {
+              oprot.writeBool(_iter15);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -857,42 +1010,66 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
     public void write(org.apache.thrift.protocol.TProtocol prot, AttributeValueP struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetType()) {
+      if (struct.isSetDataType()) {
         optionals.set(0);
       }
       if (struct.isSetId()) {
         optionals.set(1);
       }
-      if (struct.isSetString_value()) {
+      if (struct.isSetStringValues()) {
         optionals.set(2);
       }
-      if (struct.isSetInt_value()) {
+      if (struct.isSetIntValues()) {
         optionals.set(3);
       }
-      if (struct.isSetDatetime_value()) {
+      if (struct.isSetDatetimeValues()) {
         optionals.set(4);
       }
-      if (struct.isSetBoolean_value()) {
+      if (struct.isSetBooleanValues()) {
         optionals.set(5);
       }
       oprot.writeBitSet(optionals, 6);
-      if (struct.isSetType()) {
-        oprot.writeI32(struct.type.getValue());
+      if (struct.isSetDataType()) {
+        oprot.writeI32(struct.dataType.getValue());
       }
       if (struct.isSetId()) {
         oprot.writeString(struct.id);
       }
-      if (struct.isSetString_value()) {
-        oprot.writeString(struct.string_value);
+      if (struct.isSetStringValues()) {
+        {
+          oprot.writeI32(struct.stringValues.size());
+          for (String _iter16 : struct.stringValues)
+          {
+            oprot.writeString(_iter16);
+          }
+        }
       }
-      if (struct.isSetInt_value()) {
-        oprot.writeI32(struct.int_value);
+      if (struct.isSetIntValues()) {
+        {
+          oprot.writeI32(struct.intValues.size());
+          for (int _iter17 : struct.intValues)
+          {
+            oprot.writeI32(_iter17);
+          }
+        }
       }
-      if (struct.isSetDatetime_value()) {
-        oprot.writeI64(struct.datetime_value);
+      if (struct.isSetDatetimeValues()) {
+        {
+          oprot.writeI32(struct.datetimeValues.size());
+          for (long _iter18 : struct.datetimeValues)
+          {
+            oprot.writeI64(_iter18);
+          }
+        }
       }
-      if (struct.isSetBoolean_value()) {
-        oprot.writeBool(struct.boolean_value);
+      if (struct.isSetBooleanValues()) {
+        {
+          oprot.writeI32(struct.booleanValues.size());
+          for (boolean _iter19 : struct.booleanValues)
+          {
+            oprot.writeBool(_iter19);
+          }
+        }
       }
     }
 
@@ -901,28 +1078,64 @@ public class AttributeValueP implements org.apache.thrift.TBase<AttributeValueP,
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(6);
       if (incoming.get(0)) {
-        struct.type = DataTypeP.findByValue(iprot.readI32());
-        struct.setTypeIsSet(true);
+        struct.dataType = DataTypeP.findByValue(iprot.readI32());
+        struct.setDataTypeIsSet(true);
       }
       if (incoming.get(1)) {
         struct.id = iprot.readString();
         struct.setIdIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.string_value = iprot.readString();
-        struct.setString_valueIsSet(true);
+        {
+          org.apache.thrift.protocol.TList _list20 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+          struct.stringValues = new ArrayList<String>(_list20.size);
+          for (int _i21 = 0; _i21 < _list20.size; ++_i21)
+          {
+            String _elem22;
+            _elem22 = iprot.readString();
+            struct.stringValues.add(_elem22);
+          }
+        }
+        struct.setStringValuesIsSet(true);
       }
       if (incoming.get(3)) {
-        struct.int_value = iprot.readI32();
-        struct.setInt_valueIsSet(true);
+        {
+          org.apache.thrift.protocol.TList _list23 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
+          struct.intValues = new ArrayList<Integer>(_list23.size);
+          for (int _i24 = 0; _i24 < _list23.size; ++_i24)
+          {
+            int _elem25;
+            _elem25 = iprot.readI32();
+            struct.intValues.add(_elem25);
+          }
+        }
+        struct.setIntValuesIsSet(true);
       }
       if (incoming.get(4)) {
-        struct.datetime_value = iprot.readI64();
-        struct.setDatetime_valueIsSet(true);
+        {
+          org.apache.thrift.protocol.TList _list26 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64, iprot.readI32());
+          struct.datetimeValues = new ArrayList<Long>(_list26.size);
+          for (int _i27 = 0; _i27 < _list26.size; ++_i27)
+          {
+            long _elem28;
+            _elem28 = iprot.readI64();
+            struct.datetimeValues.add(_elem28);
+          }
+        }
+        struct.setDatetimeValuesIsSet(true);
       }
       if (incoming.get(5)) {
-        struct.boolean_value = iprot.readBool();
-        struct.setBoolean_valueIsSet(true);
+        {
+          org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.BOOL, iprot.readI32());
+          struct.booleanValues = new ArrayList<Boolean>(_list29.size);
+          for (int _i30 = 0; _i30 < _list29.size; ++_i30)
+          {
+            boolean _elem31;
+            _elem31 = iprot.readBool();
+            struct.booleanValues.add(_elem31);
+          }
+        }
+        struct.setBooleanValuesIsSet(true);
       }
     }
   }
