@@ -5,7 +5,7 @@ import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Class representing a subject attribute.
+ * Class representing an object attribute.
  *  
  * @author Maarten Decat
  *

@@ -5,6 +5,11 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
+import puma.peputils.Action;
+import puma.peputils.Environment;
+import puma.peputils.Object;
+import puma.peputils.PEP;
+import puma.peputils.Subject;
 import puma.peputils.thrift.PEPServer;
 import puma.peputils.thrift.RemotePEPService;
 
@@ -16,7 +21,16 @@ public class RunRemoteServerTest {
 		BasicConfigurator.configure();
 		
 		// set up server
-		PEPServer handler = new PEPServer();
+		PEPServer handler = new PEPServer(new PEP() {
+			
+			@Override
+			public boolean isAuthorized(Subject subject, Object object, Action action,
+					Environment environment) {
+				// do nothing
+				return false;
+			}
+			
+		});
 		RemotePEPService.Processor<PEPServer> processor = new RemotePEPService.Processor<PEPServer>(handler);
 		TServerTransport serverTransport;
 		try {

@@ -12,7 +12,7 @@ import com.sun.xacml.attr.StringAttribute;
 import com.sun.xacml.ctx.CachedAttribute;
 
 /**
- * Class used for representing a simple attribute value. A
+ * Class used for representing a simple attribute value.
  * 
  * @author Maarten Decat
  */

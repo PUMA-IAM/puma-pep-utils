@@ -18,8 +18,7 @@ public class RemotePEPTest {
 		Subject subject = new Subject("maarten");
 		SubjectAttributeValue roles = new SubjectAttributeValue("roles");
 		roles.addValue("phd");
-		roles.addValue("iminds-pr");
-		roles.addValue("boss-of-Jasper");
+		roles.addValue("imindsr");
 		subject.addAttributeValue(roles);
 		subject.addAttributeValue(new SubjectAttributeValue("departement", "computer-science"));
 		subject.addAttributeValue(new SubjectAttributeValue("fired", false));
@@ -32,7 +31,7 @@ public class RemotePEPTest {
 		object.addAttributeValue(new ObjectAttributeValue("location", "/docs/stuff/blabla/123.pdf"));
 		object.addAttributeValue(new ObjectAttributeValue("sender", "bert"));
 		ObjectAttributeValue destinations = new ObjectAttributeValue("destinations");
-		destinations.addValue("lantam@cs.kuleuven.be");
+		destinations.addValue("distrinet@cs.kuleuven.be");
 		destinations.addValue("iemand@example.com");
 		
 		Action action = new Action("read");

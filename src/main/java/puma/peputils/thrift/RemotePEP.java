@@ -95,11 +95,39 @@ public class RemotePEP implements PEP {
 		}
 		return ep;
 	}
+	
+	/************************
+	 * FUNCTIONALITY
+	 */
+	
+	private int thriftPort;
+	
+	private String thriftServer;
+	
+	/**
+	 * Initialize this new RemotePEP with default Thrift server (localhost:9090).
+	 * @param thriftServer
+	 * @param thriftPort
+	 */
+	public RemotePEP() {
+		this.thriftPort = 9090;
+		this.thriftServer = "localhost";
+	}
+	
+	/**
+	 * Initialize this new RemotePEP with given Thrift server (host name and port number).
+	 * @param thriftServer
+	 * @param thriftPort
+	 */
+	public RemotePEP(String thriftServer, int thriftPort) {
+		this.thriftPort = thriftPort;
+		this.thriftServer = thriftServer;
+	}
 
 	@Override
 	public boolean isAuthorized(Subject subject, Object object, Action action,
 			Environment environment) {
-		TTransport transport = new TSocket("localhost", 9090);
+		TTransport transport = new TSocket(thriftServer, thriftPort);
 		try {
 			transport.open();
 		} catch (TTransportException e) {

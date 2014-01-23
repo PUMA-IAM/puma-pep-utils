@@ -3,7 +3,7 @@ package puma.peputils;
 /**
  * Interface for all PEPs. A PEP provides only one method: 
  * 	
- * 	isAuthorized(subject, object, action)
+ * 	isAuthorized(subject, object, action, environment)
  * 
  * 
  * @author Maarten Decat

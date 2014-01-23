@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 
 /**
- * Class representing a subject attribute.
+ * Class representing an action attribute.
  *  
  * @author Maarten Decat
  *

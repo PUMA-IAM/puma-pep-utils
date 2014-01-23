@@ -5,7 +5,7 @@ import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Class representing a subject attribute.
+ * Class representing an environment attribute.
  *  
  * @author Maarten Decat
  *

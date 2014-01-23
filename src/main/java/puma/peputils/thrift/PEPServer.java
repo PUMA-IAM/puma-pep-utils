@@ -8,6 +8,7 @@ import org.apache.thrift.TException;
 
 import puma.peputils.Action;
 import puma.peputils.Environment;
+import puma.peputils.PEP;
 import puma.peputils.Subject;
 import puma.peputils.attributes.ActionAttributeValue;
 import puma.peputils.attributes.DataType;
@@ -27,6 +28,7 @@ public class PEPServer implements RemotePEPService.Iface {
 	 */
 	
 	public Subject c(SubjectP sp) {
+		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		Subject s = new Subject(sp.getId());
 		for(AttributeValueP avp: sp.getAttributeValues()) {
 			// remove the prefix to avoid double prefixes
@@ -59,6 +61,7 @@ public class PEPServer implements RemotePEPService.Iface {
 	}
 	
 	public puma.peputils.Object c(ObjectP op) {
+		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		puma.peputils.Object o = new puma.peputils.Object(op.getId());
 		for(AttributeValueP avp: op.getAttributeValues()) {
 			// remove the prefix to avoid double prefixes
@@ -91,6 +94,7 @@ public class PEPServer implements RemotePEPService.Iface {
 	}
 	
 	public Action c(ActionP ap) {
+		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		Action a = new Action(ap.getId());
 		for(AttributeValueP avp: ap.getAttributeValues()) {
 			// remove the prefix to avoid double prefixes
@@ -153,47 +157,71 @@ public class PEPServer implements RemotePEPService.Iface {
 		}
 		return e;
 	}
+	
+	/**************************
+	 * FUNCTIONALITY
+	 */
+	
+	private PEP pep;
+	
+	/**
+	 * Initialize this new PEPServer with given PEP to pass the retrieved
+	 * requests to.
+	 */
+	public PEPServer(PEP pep) {
+		if(pep == null) {
+			throw new NullPointerException("The PEP cannot be null");
+		}
+		this.pep = pep;
+	}
 
 	@Override
 	public boolean isAuthorized(SubjectP subjectP, ObjectP objectP,
 			ActionP actionP, EnvironmentP environmentP) throws TException {
-		print(c(subjectP), c(objectP), c(actionP), c(environmentP));
-		return false;
-	}
-	
-	private void p(String s) {
-		System.out.println(s);
+		// Here we should call the PDP. For now, just print the stuff that we received. 
+		Subject subject = c(subjectP);
+		puma.peputils.Object object = c(objectP);
+		Action action = c(actionP);
+		Environment environment = c(environmentP);
+		printFine(subject, object, action, environment);
+		return pep.isAuthorized(subject, object, action, environment);
 	}
 	
 	private void print(Subject subject, puma.peputils.Object object, Action action, Environment environment) {
-		p("Subject(" + subject.getId() + "):");
+		logger.info("New thrift message received: Subject #" + subject.getId() + ", Object #" + object.getId() + ", Action #" + action.getId());
+	}
+	
+	private void printFine(Subject subject, puma.peputils.Object object, Action action, Environment environment) {
+		String toPrint = "";
+		toPrint += "Subject(" + subject.getId() + "):\n";
 		for(SubjectAttributeValue sav: subject.getAttributeValues()) {
-			p("  " + sav.getId() + " =");
+			toPrint += "  " + sav.getId() + " =\n";
 			for(Object o: sav.getValues()) {
-				p("    " + o);
+				toPrint += "    " + o + "\n";
 			}
 		}
-		p("Object(" + subject.getId() + "):");
+		toPrint += "Object(" + subject.getId() + "):\n";
 		for(ObjectAttributeValue sav: object.getAttributeValues()) {
-			p("  " + sav.getId() + " =");
+			toPrint += "  " + sav.getId() + " =\n";
 			for(Object o: sav.getValues()) {
-				p("    " + o);
+				toPrint += "    " + o + "\n";
 			}
 		}
-		p("Action(" + subject.getId() + "):");
+		toPrint += "Action(" + subject.getId() + "):\n";
 		for(ActionAttributeValue sav: action.getAttributeValues()) {
-			p("  " + sav.getId() + " =");
+			toPrint += "  " + sav.getId() + " =\n";
 			for(Object o: sav.getValues()) {
-				p("    " + o);
+				toPrint += "    " + o + "\n";
 			}
 		}
-		p("Environment:");
+		toPrint += "Environment:\n";
 		for(EnvironmentAttributeValue sav: environment.getAttributeValues()) {
-			p("  " + sav.getId() + " =");
+			toPrint += "  " + sav.getId() + " =\n";
 			for(Object o: sav.getValues()) {
-				p("    " + o);
+				toPrint += "    " + o + "\n";
 			}
 		}
+		logger.info("New thrift message received:\n" + toPrint);
 	}
 	
 	
