@@ -29,6 +29,22 @@ public class AttributeValueCollection<T extends AttributeValue> {
 		this.attributeValues.add(value);
 	}
 	
+	/**
+	 * Returns the attribute with given attribute id. Returns null if no
+	 * such attribute exits.
+	 * 
+	 * Modifying the returned attribute affects the attribute in this attribute
+	 * collection.
+	 */
+	public T getAttributeValue(String id) {
+		for(T attributeValue: getAttributeValues()) {
+			if(attributeValue.getId().equals(id)) {
+				return attributeValue;
+			}
+		}
+		return null;
+	}
+	
 	/**************************
 	 * CONSTRUCTORS
 	 **************************/
