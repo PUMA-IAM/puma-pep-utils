@@ -159,6 +159,18 @@ public abstract class AttributeValue {
 		this.values.add(value);
 	}
 	
+	public void addValue(Double value) {
+		// make sure that all values are the same
+		if(this.dataType == null) {
+			// if there are no values yet, then set the type of this AttributeValue
+			this.dataType = DataType.Double;
+		} else if(this.dataType != DataType.Double) {
+			// if this AttributeValue already had a type, check that its the same
+			throw new IllegalArgumentException("Expected " + this.dataType + ", but received " + DataType.Double);
+		}
+		this.values.add(value);
+	}
+	
 	/*********************
 	 * SOME CONVERSIONS
 	 *********************/
