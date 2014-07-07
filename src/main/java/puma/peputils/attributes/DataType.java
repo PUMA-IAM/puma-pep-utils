@@ -4,6 +4,7 @@ import java.net.URI;
 
 import com.sun.xacml.attr.BooleanAttribute;
 import com.sun.xacml.attr.DateTimeAttribute;
+import com.sun.xacml.attr.DoubleAttribute;
 import com.sun.xacml.attr.IntegerAttribute;
 import com.sun.xacml.attr.StringAttribute;
 
@@ -12,7 +13,8 @@ public enum DataType {
 	String(StringAttribute.identifier, StringAttribute.identifierURI),
 	Integer(IntegerAttribute.identifier, IntegerAttribute.identifierURI),
 	DateTime(DateTimeAttribute.identifier, DateTimeAttribute.identifierURI),
-	Boolean(BooleanAttribute.identifier, BooleanAttribute.identifierURI);
+	Boolean(BooleanAttribute.identifier, BooleanAttribute.identifierURI),
+	Double(DoubleAttribute.identifier, DoubleAttribute.identifierURI);
 	
 	private String xacmlType;
 	
