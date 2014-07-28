@@ -64,6 +64,20 @@ public class AttributeValueCollection<T extends AttributeValue> {
 		return null;
 	}
 	
+	public void removeAttributeValue(String id) {
+		for (T attributeValue: getAttributeValues()) {
+			if (attributeValue.getId().equals(id)) {
+				this.attributeValues.remove(attributeValue);
+			}
+		}
+	}
+	
+	public void removeAttributeValue(T attributeValue) {
+		if (this.attributeValues.contains(attributeValue)) {
+			this.attributeValues.remove(attributeValue);
+		}
+	}
+	
 	/**************************
 	 * CONSTRUCTORS
 	 **************************/
