@@ -32,6 +32,7 @@ import puma.peputils.Subject;
 import puma.peputils.attributes.ActionAttributeValue;
 import puma.peputils.attributes.DataType;
 import puma.peputils.attributes.EnvironmentAttributeValue;
+import puma.peputils.attributes.Multiplicity;
 import puma.peputils.attributes.ObjectAttributeValue;
 import puma.peputils.attributes.SubjectAttributeValue;
 
@@ -50,8 +51,8 @@ public class PEPServer implements RemotePEPService.Iface {
 		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		Subject s = new Subject(sp.getId());
 		for(AttributeValueP avp: sp.getAttributeValues()) {
-			// remove the prefix to avoid double prefixes
-			SubjectAttributeValue sav = new SubjectAttributeValue(StringUtils.removeStart(avp.id, SubjectAttributeValue.prefix + ":"));
+			// remove the prefix to avoid double prefixes                 FIXME WE DON'T KNOW MULTIPLICITY YET !!!
+			SubjectAttributeValue sav = new SubjectAttributeValue(StringUtils.removeStart(avp.id, SubjectAttributeValue.prefix + ":"), Multiplicity.GROUPED);
 			if(avp.getDataType() == DataTypeP.BOOLEAN) {
 				sav.setDataType(DataType.Boolean);
 				for(Boolean b: avp.getBooleanValues()) {
@@ -83,8 +84,8 @@ public class PEPServer implements RemotePEPService.Iface {
 		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		puma.peputils.Object o = new puma.peputils.Object(op.getId());
 		for(AttributeValueP avp: op.getAttributeValues()) {
-			// remove the prefix to avoid double prefixes
-			ObjectAttributeValue sav = new ObjectAttributeValue(StringUtils.removeStart(avp.id, ObjectAttributeValue.prefix + ":"));
+			// remove the prefix to avoid double prefixes                 FIXME WE DON'T KNOW MULTIPLICITY YET !!!
+			ObjectAttributeValue sav = new ObjectAttributeValue(StringUtils.removeStart(avp.id, ObjectAttributeValue.prefix + ":"), Multiplicity.GROUPED);
 			if(avp.getDataType() == DataTypeP.BOOLEAN) {
 				sav.setDataType(DataType.Boolean);
 				for(Boolean b: avp.getBooleanValues()) {
@@ -116,8 +117,8 @@ public class PEPServer implements RemotePEPService.Iface {
 		// FIXME we now add the id attribute twice. I guess this will not be a problem, but still...
 		Action a = new Action(ap.getId());
 		for(AttributeValueP avp: ap.getAttributeValues()) {
-			// remove the prefix to avoid double prefixes
-			ActionAttributeValue sav = new ActionAttributeValue(StringUtils.removeStart(avp.id, ActionAttributeValue.prefix + ":"));
+			// remove the prefix to avoid double prefixes                 FIXME WE DON'T KNOW MULTIPLICITY YET !!!
+			ActionAttributeValue sav = new ActionAttributeValue(StringUtils.removeStart(avp.id, ActionAttributeValue.prefix + ":"), Multiplicity.GROUPED);
 			if(avp.getDataType() == DataTypeP.BOOLEAN) {
 				sav.setDataType(DataType.Boolean);
 				for(Boolean b: avp.getBooleanValues()) {
@@ -148,8 +149,8 @@ public class PEPServer implements RemotePEPService.Iface {
 	public Environment c(EnvironmentP sp) {
 		Environment e = new Environment();
 		for(AttributeValueP avp: sp.getAttributeValues()) {
-			// remove the prefix to avoid double prefixes
-			EnvironmentAttributeValue sav = new EnvironmentAttributeValue(StringUtils.removeStart(avp.id, EnvironmentAttributeValue.prefix + ":"));
+			// remove the prefix to avoid double prefixes                 FIXME WE DON'T KNOW MULTIPLICITY YET !!!
+			EnvironmentAttributeValue sav = new EnvironmentAttributeValue(StringUtils.removeStart(avp.id, EnvironmentAttributeValue.prefix + ":"), Multiplicity.GROUPED);
 			if(avp.getDataType() == DataTypeP.BOOLEAN) {
 				sav.setDataType(DataType.Boolean);
 				for(Boolean b: avp.getBooleanValues()) {

@@ -46,28 +46,28 @@ public class ObjectAttributeValue extends AttributeValue {
 	 * CONSTRUCTORS
 	 ***********************/
 	
-	public ObjectAttributeValue(String id) {
-		super(addPrefix(id));
+	public ObjectAttributeValue(String id, Multiplicity multiplicity) {
+		super(addPrefix(id), multiplicity);
 	}
 	
-	public ObjectAttributeValue(String id, DataType dataType) {
-		super(addPrefix(id), dataType);
+	public ObjectAttributeValue(String id, Multiplicity multiplicity, DataType dataType) {
+		super(addPrefix(id), multiplicity, dataType);
 	}
 	
-	public ObjectAttributeValue(String id, Integer value) {
-		super(addPrefix(id), value);
+	public ObjectAttributeValue(String id, Multiplicity multiplicity, Integer value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public ObjectAttributeValue(String id, Date value) {
-		super(addPrefix(id), value);
+	public ObjectAttributeValue(String id, Multiplicity multiplicity, Date value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public ObjectAttributeValue(String id, String value) {
-		super(addPrefix(id), value);
+	public ObjectAttributeValue(String id, Multiplicity multiplicity, String value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public ObjectAttributeValue(String id, Boolean value) {
-		super(addPrefix(id), value);
+	public ObjectAttributeValue(String id, Multiplicity multiplicity, Boolean value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 
 }

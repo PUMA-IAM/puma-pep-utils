@@ -57,6 +57,16 @@ public abstract class AttributeValue {
 		return id;
 	}
 	
+	private Multiplicity multiplicity;
+	
+	public Multiplicity getMultiplicity() {
+		return multiplicity;
+	}
+	
+	public void setMultiplicity(Multiplicity multiplicity) {
+		this.multiplicity = multiplicity;
+	}
+	
 	public abstract String getIdWithoutPrefix();
 
 	private Collection<Object> values; 
@@ -77,33 +87,34 @@ public abstract class AttributeValue {
 		this.values = new LinkedList<Object>();
 	}
 	
-	public AttributeValue(String id) {
+	public AttributeValue(String id, Multiplicity multiplicity) {
 		this();
 		this.id = id;
+		this.multiplicity = multiplicity;
 	}
 	
-	public AttributeValue(String id, DataType dataType) {
-		this(id);
+	public AttributeValue(String id, Multiplicity multiplicity, DataType dataType) {
+		this(id, multiplicity);
 		this.dataType = dataType;
 	}
 	
-	public AttributeValue(String id, Integer value) {
-		this(id, DataType.Integer);
+	public AttributeValue(String id, Multiplicity multiplicity, Integer value) {
+		this(id, multiplicity, DataType.Integer);
 		this.addValue(value);
 	}
 	
-	public AttributeValue(String id, Date value) {
-		this(id, DataType.DateTime);
+	public AttributeValue(String id, Multiplicity multiplicity, Date value) {
+		this(id, multiplicity, DataType.DateTime);
 		this.addValue(value);
 	}
 	
-	public AttributeValue(String id, String value) {
-		this(id, DataType.String);
+	public AttributeValue(String id, Multiplicity multiplicity, String value) {
+		this(id, multiplicity, DataType.String);
 		this.addValue(value);
 	}
 	
-	public AttributeValue(String id, Boolean value) {
-		this(id, DataType.Boolean);
+	public AttributeValue(String id, Multiplicity multiplicity, Boolean value) {
+		this(id, multiplicity, DataType.Boolean);
 		this.addValue(value);
 	}
 	
@@ -112,6 +123,9 @@ public abstract class AttributeValue {
 	 **********************/
 	
 	public void addValue(Integer value) {
+		// an AttributeValue with multiplicity ATOMIC should have only (exactly) one value
+		if(this.multiplicity == Multiplicity.ATOMIC && !this.values.isEmpty())
+			throw new IllegalStateException("This atomic attribute already has a value.");
 		// make sure that all values are the same
 		if(this.dataType == null) {
 			// if there are no values yet, then set the type of this AttributeValue
@@ -124,6 +138,9 @@ public abstract class AttributeValue {
 	}
 	
 	public void addValue(String value) {
+		// an AttributeValue with multiplicity ATOMIC should have only (exactly) one value
+		if(this.multiplicity == Multiplicity.ATOMIC && !this.values.isEmpty())
+			throw new IllegalStateException("This atomic attribute already has a value.");
 		// make sure that all values are the same
 		if(this.dataType == null) {
 			// if there are no values yet, then set the type of this AttributeValue
@@ -136,6 +153,9 @@ public abstract class AttributeValue {
 	}
 	
 	public void addValue(Date value) {
+		// an AttributeValue with multiplicity ATOMIC should have only (exactly) one value
+		if(this.multiplicity == Multiplicity.ATOMIC && !this.values.isEmpty())
+			throw new IllegalStateException("This atomic attribute already has a value.");
 		// make sure that all values are the same
 		if(this.dataType == null) {
 			// if there are no values yet, then set the type of this AttributeValue
@@ -148,6 +168,9 @@ public abstract class AttributeValue {
 	}
 	
 	public void addValue(Boolean value) {
+		// an AttributeValue with multiplicity ATOMIC should have only (exactly) one value
+		if(this.multiplicity == Multiplicity.ATOMIC && !this.values.isEmpty())
+			throw new IllegalStateException("This atomic attribute already has a value.");
 		// make sure that all values are the same
 		if(this.dataType == null) {
 			// if there are no values yet, then set the type of this AttributeValue
@@ -160,6 +183,9 @@ public abstract class AttributeValue {
 	}
 	
 	public void addValue(Double value) {
+		// an AttributeValue with multiplicity ATOMIC should have only (exactly) one value
+		if(this.multiplicity == Multiplicity.ATOMIC && !this.values.isEmpty())
+			throw new IllegalStateException("This atomic attribute already has a value.");
 		// make sure that all values are the same
 		if(this.dataType == null) {
 			// if there are no values yet, then set the type of this AttributeValue

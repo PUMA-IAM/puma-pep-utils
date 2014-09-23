@@ -46,28 +46,28 @@ public class SubjectAttributeValue extends AttributeValue {
 	 * CONSTRUCTORS
 	 ***********************/
 	
-	public SubjectAttributeValue(String id) {
-		super(addPrefix(id));
+	public SubjectAttributeValue(String id, Multiplicity multiplicity) {
+		super(addPrefix(id), multiplicity);
 	}
 	
-	public SubjectAttributeValue(String id, DataType dataType) {
-		super(addPrefix(id), dataType);
+	public SubjectAttributeValue(String id, Multiplicity multiplicity, DataType dataType) {
+		super(addPrefix(id), multiplicity, dataType);
 	}
 	
-	public SubjectAttributeValue(String id, Integer value) {
-		super(addPrefix(id), value);
+	public SubjectAttributeValue(String id, Multiplicity multiplicity, Integer value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public SubjectAttributeValue(String id, Date value) {
-		super(addPrefix(id), value);
+	public SubjectAttributeValue(String id, Multiplicity multiplicity, Date value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public SubjectAttributeValue(String id, String value) {
-		super(addPrefix(id), value);
+	public SubjectAttributeValue(String id, Multiplicity multiplicity, String value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public SubjectAttributeValue(String id, Boolean value) {
-		super(addPrefix(id), value);
+	public SubjectAttributeValue(String id, Multiplicity multiplicity, Boolean value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 
 }

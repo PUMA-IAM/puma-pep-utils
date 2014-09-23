@@ -21,6 +21,7 @@ package puma.peputils;
 
 import java.util.Collection;
 
+import puma.peputils.attributes.Multiplicity;
 import puma.peputils.attributes.ObjectAttributeValue;
 
 
@@ -51,7 +52,7 @@ public class Object extends NamedAttributeValueCollection<ObjectAttributeValue> 
 
 	@Override
 	protected void addIdAttribute(String id) {
-		this.addAttributeValue(new ObjectAttributeValue("id", id));
+		this.addAttributeValue(new ObjectAttributeValue("id", Multiplicity.ATOMIC, id));
 	}
 
 }

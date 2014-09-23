@@ -22,6 +22,7 @@ package puma.peputils;
 import java.util.Collection;
 
 import puma.peputils.attributes.ActionAttributeValue;
+import puma.peputils.attributes.Multiplicity;
 
 
 /**
@@ -51,7 +52,7 @@ public class Action extends NamedAttributeValueCollection<ActionAttributeValue> 
 
 	@Override
 	protected void addIdAttribute(String id) {
-		this.addAttributeValue(new ActionAttributeValue("id", id));
+		this.addAttributeValue(new ActionAttributeValue("id", Multiplicity.ATOMIC, id));
 	}
 
 }

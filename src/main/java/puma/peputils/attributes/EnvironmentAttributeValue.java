@@ -46,28 +46,28 @@ public class EnvironmentAttributeValue extends AttributeValue {
 	 * CONSTRUCTORS
 	 ***********************/
 	
-	public EnvironmentAttributeValue(String id) {
-		super(addPrefix(id));
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity) {
+		super(addPrefix(id), multiplicity);
 	}
 	
-	public EnvironmentAttributeValue(String id, DataType dataType) {
-		super(addPrefix(id), dataType);
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity, DataType dataType) {
+		super(addPrefix(id), multiplicity, dataType);
 	}
 	
-	public EnvironmentAttributeValue(String id, Integer value) {
-		super(addPrefix(id), value);
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity, Integer value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public EnvironmentAttributeValue(String id, Date value) {
-		super(addPrefix(id), value);
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity, Date value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public EnvironmentAttributeValue(String id, String value) {
-		super(addPrefix(id), value);
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity, String value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 	
-	public EnvironmentAttributeValue(String id, Boolean value) {
-		super(addPrefix(id), value);
+	public EnvironmentAttributeValue(String id, Multiplicity multiplicity, Boolean value) {
+		super(addPrefix(id), multiplicity, value);
 	}
 
 }
