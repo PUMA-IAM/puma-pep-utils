@@ -35,7 +35,11 @@ public class ActionAttributeValue extends AttributeValue {
 	public static final String prefix = "action";
 	
 	private static final String addPrefix(String s) {
-		return prefix + ":" + s;
+		final String fullPrefix = prefix + ":";
+		if(!s.startsWith(fullPrefix))
+			return fullPrefix + s;
+		else 
+			return s;
 	}
 
 	@Override
